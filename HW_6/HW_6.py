@@ -1,5 +1,3 @@
-import locale
-
 import pytest
 
 data1 = [
