@@ -5,6 +5,8 @@ from selene import browser, be, have, command
 
 def test_hw_5():
     browser.open("")
+    browser.driver.execute_script("$('#fixedban').remove()")
+    browser.driver.execute_script("$('footer').remove()")
     browser.element('#firstName').should(be.blank).type('Semen')
     browser.element('#lastName').should(be.blank).type('Shpak')
     browser.element('#userEmail').should(be.blank).type('ShpakS@mail.ru')
@@ -20,7 +22,6 @@ def test_hw_5():
     browser.element('//div[text()="Chemistry"]').click()
     browser.element('#subjectsInput').should(be.blank).type('e')
     browser.element('//div[text()="English"]').click()
-    browser.all('#hobbiesWrapper>.col-md-9>.custom-checkbox').wait.for_(have.size(3))
     browser.all('#hobbiesWrapper>.col-md-9>.custom-checkbox')[0].click()
     browser.all('#hobbiesWrapper>.col-md-9>.custom-checkbox')[1].click()
     browser.element('//input[@type="file"]').type(os.path.abspath(os.path.join(os.getcwd())) + '//photo1.jpg')

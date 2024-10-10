@@ -14,6 +14,7 @@ def browser_management():
     browser.config.base_url = "https://demoqa.com/automation-practice-form/"
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
+    options.page_load_strategy = "eager"
     # options.add_argument('--headless')
     browser.config.driver_options = options
     browser.config.driver.maximize_window()
