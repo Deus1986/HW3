@@ -1,9 +1,10 @@
-from HW3.data.users import user_semen
-from HW3.pages.simple_registration_page import SimpleRegistrationPage
+from selene import browser
+
+from HW3.application import app
+from HW3.data.users import User, UserData
 
 
 def test__simple_registration():
-    registration_page = SimpleRegistrationPage()
-    registration_page.open()
-    registration_page.register(user_semen)
-    registration_page.should_have_registered(user_semen)
+    app.left_panel.open_simple_registration_form()
+    app.simple_registration_page.register(User.user_semen)
+    app.simple_registration_page.should_have_registered(User.user_semen, UserData)

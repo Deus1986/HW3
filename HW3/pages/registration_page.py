@@ -8,7 +8,7 @@ class RegistrationPage:
         pass
 
     def open_page(self):
-        browser.open("/text-box")
+        browser.open("/")
         browser.driver.execute_script("$('#fixedban').remove()")
         browser.driver.execute_script("$('footer').remove()")
 
