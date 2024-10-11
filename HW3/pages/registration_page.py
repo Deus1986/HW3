@@ -28,12 +28,16 @@ class RegistrationPage:
         browser.element('#userNumber').should(be.blank).type(value)
 
     def choose_day_birthday(self, value):
-        birthday = re.split(",|\s", value)
+        if value.day < 10:
+            day = f"0{value.day}"
+        else:
+            day = value.day
         browser.element('#dateOfBirthInput').click()
-        browser.element('.react-datepicker__month-select').click().element(f'//option[text()= "{birthday[1]}"]').click()
+        browser.element('.react-datepicker__month-select').click().element(
+            f'//option[@value= "{int(value.month) - 1}"]').click()
         browser.element('.react-datepicker__year-select').click()
-        browser.element(f'//option[@value="{birthday[2]}"]').perform(command.js.scroll_into_view).click()
-        browser.element(f'.react-datepicker__day--0{birthday[0]}').click()
+        browser.element(f'//option[@value="{value.year}"]').perform(command.js.scroll_into_view).click()
+        browser.element(f'.react-datepicker__day--0{day}').click()
 
     def choose_subject(self, subject_names_list):
         for subject in subject_names_list:
@@ -72,5 +76,3 @@ class RegistrationPage:
             have.exact_texts(student_name, student_email, student_gender, student_number, student_birthday,
                              student_subjects, student_hobbies, student_photo, student_current_address,
                              student_state_and_city))
-
-

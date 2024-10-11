@@ -27,6 +27,6 @@ class SimpleRegistrationPage:
     def should_have_registered(self, user):
         self.page.should_have_registered(" ".join(user.fully_name.values()),
                                          user.email, user.gender, user.number,
-                                         user.birthday, ", ".join(user.subjects),
+                                         user.birthday.strftime("%d %B,%Y"), ", ".join(user.subjects),
                                          ", ".join(user.hobbies), user.photo_file_name,
                                          user.current_address, " ".join(user.state_city.values()))

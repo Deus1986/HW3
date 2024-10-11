@@ -21,6 +21,6 @@ def test_hw_5():
     registration_page.click_submit()
     registration_page.should_have_registered(" ".join(user_semen.fully_name.values()),
                                              user_semen.email, user_semen.gender, user_semen.number,
-                                             user_semen.birthday, ", ".join(user_semen.subjects),
+                                             user_semen.birthday.strftime("%d %B,%Y"), ", ".join(user_semen.subjects),
                                              ", ".join(user_semen.hobbies), user_semen.photo_file_name,
                                              user_semen.current_address, " ".join(user_semen.state_city.values()))
