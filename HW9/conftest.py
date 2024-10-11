@@ -11,7 +11,7 @@ def set_browser_window_size():
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():
-    browser.config.base_url = "https://demoqa.com/automation-practice-form/"
+    browser.config.base_url = "https://demoqa.com"
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     options.page_load_strategy = "eager"
