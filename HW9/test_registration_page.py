@@ -1,6 +1,7 @@
 from HW3.application import app
 from HW3.data.users import User, UserData
 
+
 def test_registration_page():
     app.left_panel.open_simple_registration_form()
     app.registration_page.fill_fully_name(User.user_semen["0"])
