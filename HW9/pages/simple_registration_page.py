@@ -1,4 +1,4 @@
-from HW3.pages.registration_page import RegistrationPage
+from HW9.pages.registration_page import RegistrationPage
 
 
 class SimpleRegistrationPage:

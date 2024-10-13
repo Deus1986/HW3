@@ -1,5 +1,3 @@
-from selene import browser
-
 from HW3.application import app
 from HW3.data.users import User, UserData
 

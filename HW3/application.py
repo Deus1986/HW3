@@ -1,6 +1,6 @@
 from HW3.components.leftpanel import LeftPanel
-from HW3.pages.registration_page import RegistrationPage
-from HW3.pages.simple_registration_page import SimpleRegistrationPage
+from HW9.pages.registration_page import RegistrationPage
+from HW9.pages.simple_registration_page import SimpleRegistrationPage
 
 
 class Application:

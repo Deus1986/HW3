@@ -1,6 +1,5 @@
-import re
+import pytest
 from selene import browser, be, command, have
-from HW3.resources import resource_path
 
 
 class RegistrationPage:
