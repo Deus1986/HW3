@@ -15,7 +15,7 @@ def test_hw_5():
     registration_page.choose_subject('e', 'English')
     registration_page.choose_hobby('Sports')
     registration_page.choose_hobby('Reading')
-    registration_page.load_photo('//photo1.jpg')
+    registration_page.load_photo('photo1.jpg')
     registration_page.fill_address(user_semen.current_address)
     registration_page.scroll_to_element('#submit')
     registration_page.select_state("Haryana")
