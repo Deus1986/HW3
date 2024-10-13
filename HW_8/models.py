@@ -1,6 +1,3 @@
-import pytest
-
-
 class Product:
     """
     Класс продукта
@@ -31,6 +28,8 @@ class Product:
         """
         if not self.check_quantity(quantity):
             raise ValueError('Продукта недостаточно на складе')
+        else:
+            self.quantity -= quantity
 
     def __hash__(self):
         return hash(self.name + self.description)
@@ -59,7 +58,6 @@ class Cart:
             self.products[product] += buy_count
         else:
             self.products[product] = buy_count
-        return product
 
     def remove_product(self, product: Product, remove_count=None):
         """
@@ -68,16 +66,14 @@ class Cart:
         Если remove_count больше, чем количество продуктов в позиции, то удаляется вся позиция
         """
         if product not in self.products:
-            raise ValueError("Корзина пустая")
-        if remove_count is None or remove_count > self.products[product]:
+            raise ValueError("Продукта нет в корзине")
+        if remove_count is None or remove_count >= self.products[product]:
             del self.products[product]
         elif remove_count <= self.products[product]:
             self.products[product] -= remove_count
-            return self.products[product]
 
-    def clear(self, product: Product):
-        if self.products:
-            del self.products[product]
+    def clear(self):
+        self.products.clear()
 
     def get_total_price(self) -> float:
         total_price = 0
@@ -96,8 +92,9 @@ class Cart:
         else:
             for product, quantity in self.products.items():
                 if not product.check_quantity(quantity):
-                    raise ValueError("Товаров недостаточно")
-                else:
-                    product.buy(quantity)
+                    raise ValueError("Товара недостаточно")
 
-
+        for product, quantity in self.products.items():
+            product.buy(quantity)
+        self.clear()
+        return "Success"
