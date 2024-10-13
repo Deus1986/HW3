@@ -48,7 +48,7 @@ class RegistrationPage:
             browser.element(f'//label[text()="{hobby}"]').click()
 
     def load_photo(self, photo_path):
-        browser.element('//input[@type="file"]').type(resource_path(f"//{photo_path}"))
+        browser.element('//input[@type="file"]').type(resource_path(f"{photo_path}"))
 
     def fill_address(self, value):
         browser.element('//textarea[@class="form-control"]').type(value)
