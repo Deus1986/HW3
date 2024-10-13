@@ -1,5 +1,5 @@
 from HW3.data.users import user_semen
-from HW3.pages.simple_registration_page import SimpleRegistrationPage
+from HW9.pages.simple_registration_page import SimpleRegistrationPage
 
 
 def test__simple_registration():
