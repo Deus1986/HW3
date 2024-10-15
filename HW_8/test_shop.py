@@ -29,15 +29,17 @@ class TestProducts:
 
     def test_product_check_quantity(self, product):
         # TODO напишите проверки на метод check_quantity
-        assert product.check_quantity(1)
-        assert product.check_quantity(55)
-        assert product.check_quantity(1000)
-        assert not product.check_quantity(1001)
+        assert product.check_quantity(1) == True
+        assert product.check_quantity(55) == True
+        assert product.check_quantity(1000) == True
+        assert product.check_quantity(1001) == False
 
     @pytest.mark.parametrize("quantity", [1, 55, 1000])
     def test_product_buy(self, product, quantity):
         # TODO напишите проверки на метод buy
+        product_quantity_before_sale = product.quantity
         product.buy(quantity)
+        assert product.quantity == product_quantity_before_sale - quantity
 
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,
@@ -85,7 +87,7 @@ class TestCart:
         assert empty_cart.products[product] == 5
         assert empty_cart.products[product_2] == 5
         empty_cart.clear()
-        assert not empty_cart.products
+        assert empty_cart.products == {}
 
     def test_assert_total_price(self, empty_cart, product_2):
         empty_cart.add_product(product_2, 40)
@@ -101,8 +103,14 @@ class TestCart:
     def test_buy_products_from_cart(self, empty_cart, product, product_2):
         empty_cart.add_product(product, 40)
         empty_cart.add_product(product_2, 20)
+        product_quantity_before_sale = product.quantity
+        product_2_quantity_before_sale = product_2.quantity
+        assert empty_cart.products[product] == 40
+        assert empty_cart.products[product_2] == 20
         buy_status = empty_cart.buy()
         assert buy_status == "Success"
+        assert product.quantity == product_quantity_before_sale - 40
+        assert product_2.quantity == product_2_quantity_before_sale - 20
 
     def test_buy_products_from_cart_with_absent_necessary_quantity_of_goods(self, empty_cart, product, product_2):
         empty_cart.add_product(product, 40)

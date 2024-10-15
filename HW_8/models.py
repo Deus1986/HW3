@@ -69,7 +69,7 @@ class Cart:
             raise ValueError("Продукта нет в корзине")
         if remove_count is None or remove_count >= self.products[product]:
             del self.products[product]
-        elif remove_count <= self.products[product]:
+        elif remove_count < self.products[product]:
             self.products[product] -= remove_count
 
     def clear(self):
